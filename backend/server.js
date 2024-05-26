@@ -6,8 +6,8 @@ import authRoutes from "./routes/auth.routes.js"
 import messageRoutes from "./routes/message.routes.js"
 import userRoutes from "./routes/user.routes.js"
 import dbConnection from "./db/dbConnection.js";
+import {app, server} from "./socket/socket.js"
 
-const app = express();
 const PORT = process.env.PORT || 5000
 
 
@@ -20,7 +20,7 @@ app.use("/api/auth",authRoutes)
 app.use("/api/messages",messageRoutes)
 app.use("/api/users",userRoutes)
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     dbConnection(); 
     console.log(`Server Running on Port ${PORT}`)
 })
